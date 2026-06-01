@@ -37,7 +37,15 @@ export const siteConfig = {
 export type SocialLinks = typeof siteConfig.person.social;
 
 export const heroContent = {
-  headline: "Software Engineer building reliable products end to end.",
+  /**
+   * The headline renders as `lead` + a gradient-highlighted `highlight` + `trail`.
+   * Edit each part; leave `trail` empty if the highlight ends the sentence.
+   */
+  headline: {
+    lead: "Software Engineer building ",
+    highlight: "reliable products",
+    trail: " end to end.",
+  },
   subline:
     "Experienced in building scalable APIs, enterprise workflows, and modern web applications using .NET, React, Next.js, and SQL technologies.",
   /**
@@ -46,8 +54,16 @@ export const heroContent = {
    */
   eligibilityLine:
     "Full working rights in Australia and available for full-time opportunities in Melbourne.",
+  /** Small badge shown above the headline. Set to null to hide. */
+  availability: "Available for full-time roles",
+  /** Quick-glance highlights rendered under the hero CTAs. */
+  stats: [
+    { value: "3+ yrs", label: "Commercial experience" },
+    { value: ".NET · React", label: "Core stack" },
+    { value: "Melbourne", label: "Australia · work rights" },
+  ],
   primaryCta: { label: "Get in touch", href: "#contact" },
-  secondaryCta: { label: "View work", href: "#case-studies" },
+  secondaryCta: { label: "View experience", href: "#experience" },
 };
 
 export const aboutParagraphs = [
@@ -105,13 +121,14 @@ export type ExperienceItem = {
   period: string;
   summary: string;
   highlights: string[];
+  tech?: string[];
 };
 
 export const experience: ExperienceItem[] = [
   {
     org: "FINAP - Fintechnology Asia Pacific Lanka Private Limited",
     role: "Software Engineer",
-    period: "2023 — Present",
+    period: "Sep 2023 — Oct 2025",
     summary:
       "Worked on enterprise supply chain and operational management systems using .NET and SQL Server. Contributed to backend services, API development, SQL optimisation, debugging, and production support across business-critical workflows.",
     highlights: [
@@ -121,11 +138,12 @@ export const experience: ExperienceItem[] = [
       "Collaborated with QA and business stakeholders during feature delivery.",
       "Contributed across development, deployment, and support phases.",
     ],
+    tech: ["ASP.NET Core", "C#", "SQL Server", "REST APIs", "Azure DevOps"],
   },
   {
     org: "SLT Digital Services (Pvt) Ltd",
     role: "Software developer",
-    period: "2022 — 2023",
+    period: "Oct 2022 — Apr 2023",
     summary:
       "Worked on internal business applications and reporting systems with strong SQL Server usage and operational data handling.",
     highlights: [
@@ -134,6 +152,7 @@ export const experience: ExperienceItem[] = [
       "Assisted with debugging, testing, and production support",
       "Worked within Agile delivery teams on business application improvements",
     ],
+    tech: ["React", "SQL Server", "Reporting", "Agile"],
   },
   {
     org: "Affordable Dumpster Rental (US) — Freelance Developer",
@@ -147,6 +166,7 @@ export const experience: ExperienceItem[] = [
       "Worked with Supabase and PostgreSQL for operational data management.",
       "Participated in deployment and production support activities.",
     ],
+    tech: ["Next.js", "NestJS", "Supabase", "PostgreSQL", "TypeScript"],
   },
 ];
 
