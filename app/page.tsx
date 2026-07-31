@@ -45,10 +45,10 @@ export default function Home() {
               aria-hidden
             />
             <div className="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-              <div className="order-2 flex justify-center lg:order-2 lg:col-span-5 lg:justify-end">
+              <div className="order-1 flex justify-center lg:order-2 lg:col-span-5 lg:justify-end">
                 <ProfileAvatar name={person.name} src={person.avatarSrc} />
               </div>
-              <div className="order-1 min-w-0 lg:order-1 lg:col-span-7">
+              <div className="order-2 min-w-0 lg:order-1 lg:col-span-7">
                 {heroContent.availability ? (
                   <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/70 px-3 py-1 text-xs font-medium text-[var(--color-muted)] backdrop-blur-sm">
                     <span className="relative inline-flex h-2 w-2 text-emerald-500">
