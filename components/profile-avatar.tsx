@@ -27,7 +27,7 @@ export function ProfileAvatar({ name, src }: ProfileAvatarProps) {
         {src ? (
           <Image
             src={src}
-            alt={`${name} — profile`}
+            alt={`${name}, software engineer in Melbourne`}
             width={size}
             height={size}
             priority

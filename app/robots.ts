@@ -1,8 +1,17 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { getSiteUrl, isIndexableDeployment } from "@/lib/url";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = siteConfig.url.replace(/\/$/, "");
+  const base = getSiteUrl();
+
+  if (!isIndexableDeployment()) {
+    return {
+      rules: {
+        userAgent: "*",
+        disallow: "/",
+      },
+    };
+  }
 
   return {
     rules: {
