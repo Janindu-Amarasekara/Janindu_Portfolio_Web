@@ -60,6 +60,7 @@ export function ContactDetails() {
         <li key={item.label}>
           <a
             href={item.href}
+            aria-label={`${item.label}: ${item.value}`}
             className="group flex items-center gap-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-surface)] hover:shadow-md"
             {...(item.external
               ? { rel: "noopener noreferrer", target: "_blank" }

@@ -1,22 +1,18 @@
 import Link from "next/link";
 import {
   aboutParagraphs,
-  caseStudies,
   experience,
   heroContent,
-  projects,
   siteConfig,
   skillGroups,
 } from "@/lib/site";
-import { CaseStudyCard } from "@/components/case-study-card";
 import { ContactDetails } from "@/components/contact-details";
-import { ProjectCard } from "@/components/project-card";
+import { JsonLd } from "@/components/json-ld";
 import { Section } from "@/components/section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ProfileAvatar } from "@/components/profile-avatar";
 import { SkillGroupCard } from "@/components/skill-group";
-import { Reveal } from "@/components/reveal";
 import {
   ArrowRightIcon,
   DownloadIcon,
@@ -32,8 +28,9 @@ export default function Home() {
 
   return (
     <>
+      <JsonLd />
       <SiteHeader />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <div className="mx-auto max-w-5xl px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-20 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl border border-[var(--color-border)]/80 bg-[var(--color-surface)]/60 p-8 shadow-sm backdrop-blur-sm sm:p-10 lg:p-12 dark:bg-[var(--color-surface)]/30">
             <div
@@ -102,7 +99,7 @@ export default function Home() {
                 <div className="mt-6 flex items-center gap-2">
                   <a
                     href={`mailto:${social.email}`}
-                    aria-label="Email"
+                    aria-label={`Email ${person.name}`}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-muted)] transition-colors hover:border-[var(--color-accent)]/40 hover:text-[var(--color-accent)]"
                   >
                     <MailIcon className="h-[18px] w-[18px]" />
@@ -111,7 +108,7 @@ export default function Home() {
                     href={social.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="GitHub"
+                    aria-label={`${person.name} on GitHub`}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-muted)] transition-colors hover:border-[var(--color-accent)]/40 hover:text-[var(--color-accent)]"
                   >
                     <GithubIcon className="h-[18px] w-[18px]" />
@@ -120,7 +117,7 @@ export default function Home() {
                     href={social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LinkedIn"
+                    aria-label={`${person.name} on LinkedIn`}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-muted)] transition-colors hover:border-[var(--color-accent)]/40 hover:text-[var(--color-accent)]"
                   >
                     <LinkedinIcon className="h-[18px] w-[18px]" />

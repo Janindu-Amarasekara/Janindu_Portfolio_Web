@@ -2,16 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { primaryNav } from "@/lib/nav";
 import { siteConfig } from "@/lib/site";
-
-const nav = [
-  { href: "#about", label: "About", id: "about" },
-  { href: "#skills", label: "Skills", id: "skills" },
-  { href: "#experience", label: "Experience", id: "experience" },
-  // { href: "#case-studies", label: "Work", id: "case-studies" },
-  // { href: "#projects", label: "Projects", id: "projects" },
-  { href: "#contact", label: "Contact", id: "contact" },
-];
 
 export function SiteHeader() {
   const [active, setActive] = useState<string | null>(null);
@@ -19,7 +11,7 @@ export function SiteHeader() {
 
   // Highlight the nav link for the section currently in view.
   useEffect(() => {
-    const sections = nav
+    const sections = primaryNav
       .map((item) => document.getElementById(item.id))
       .filter((el): el is HTMLElement => Boolean(el));
     if (sections.length === 0) return;
@@ -38,6 +30,16 @@ export function SiteHeader() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
@@ -51,7 +53,7 @@ export function SiteHeader() {
           className="hidden items-center gap-1 text-sm font-medium text-[var(--color-muted)] md:flex"
           aria-label="Primary"
         >
-          {nav
+          {primaryNav
             .filter((item) => item.id !== "contact")
             .map((item) => (
             <Link
@@ -70,7 +72,7 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <Link
-            href="#contact"
+            href="/#contact"
             className="hidden rounded-full bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-[var(--color-accent-fg)] shadow-sm transition-opacity hover:opacity-90 sm:inline-flex"
           >
             Contact
@@ -80,6 +82,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobile-nav"
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent)]/40 md:hidden"
           >
             <svg
@@ -109,14 +112,14 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile dropdown nav */}
       {open ? (
         <nav
+          id="mobile-nav"
           className="border-t border-[var(--color-border)] bg-[var(--color-bg)]/95 px-4 py-3 backdrop-blur-md md:hidden"
           aria-label="Mobile"
         >
           <ul className="flex flex-col">
-            {nav.map((item) => (
+            {primaryNav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

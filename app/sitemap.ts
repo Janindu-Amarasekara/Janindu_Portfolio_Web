@@ -1,20 +1,19 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { getSiteUrl } from "@/lib/url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = siteConfig.url.replace(/\/$/, "");
-  const lastModified = new Date();
+  const base = getSiteUrl();
 
   return [
     {
       url: base,
-      lastModified,
+      lastModified: new Date("2026-09-05"),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${base}/privacy`,
-      lastModified,
+      lastModified: new Date("2026-09-05"),
       changeFrequency: "yearly",
       priority: 0.3,
     },

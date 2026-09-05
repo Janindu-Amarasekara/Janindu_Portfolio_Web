@@ -130,6 +130,13 @@ code {
   animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;

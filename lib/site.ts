@@ -3,15 +3,31 @@
  * Safe to commit; keep employer-identifying details out if under NDA.
  */
 
+import { getSiteUrl } from "@/lib/url";
+
 export const siteConfig = {
   /** Used in metadata and JSON-LD. */
-  title: "Janindu Amarasekara — Software Engineer",
-  /** Short tagline for OG / meta description. */
+  title: "Janindu Amarasekara — Software Engineer in Melbourne",
+  /** Short tagline for OG / meta description. Keep ~150–160 characters. */
   description:
-    "Full-Stack Developer with 3 years of experience delivering reliable .NET and React/Next.js products for enterprise teams. Based in Australia with full work rights.",
+    "Full-stack software engineer in Melbourne with 3 years of experience in .NET, React, and Next.js. Full Australian work rights. Open to full-time roles.",
   /** Canonical site URL — set NEXT_PUBLIC_SITE_URL in production (see README). */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: getSiteUrl(),
   locale: "en-AU",
+  /** Open Graph requires an underscore locale. */
+  ogLocale: "en_AU",
+  keywords: [
+    "Janindu Amarasekara",
+    "Software Engineer Melbourne",
+    "Full Stack Developer Australia",
+    ".NET developer",
+    "ASP.NET Core",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "SQL Server",
+    "Melbourne software engineer",
+  ],
   person: {
     name: "Janindu Amarasekara",
     jobTitle: "Software Engineer · Backend & Full Stack",
@@ -62,14 +78,14 @@ export const heroContent = {
     { value: ".NET · React", label: "Core stack" },
     { value: "Melbourne", label: "Australia · work rights" },
   ],
-  primaryCta: { label: "Get in touch", href: "#contact" },
-  secondaryCta: { label: "View experience", href: "#experience" },
+  primaryCta: { label: "Get in touch", href: "/#contact" },
+  secondaryCta: { label: "View experience", href: "/#experience" },
 };
 
 export const aboutParagraphs = [
-  "I work across the stack using ASP.NET Core, React and Next.js, SQL Server, PostgreSQL, and Supabase. My focus is clear architecture, reliable delivery, and maintainable systems. I'm based in Australia with full work rights and available for full-time opportunities.",
-  "Most of my commercial work is in private repositories. These case studies are written to explain scope, technical decisions, and measurable outcomes while respecting confidentiality.",
-  "I am also publishing focused public projects that demonstrate secure authentication, scalable APIs, and production-ready application architecture.",
+  "I work across the stack using ASP.NET Core, React and Next.js, SQL Server, PostgreSQL, and Supabase. My focus is clear architecture, reliable delivery, and maintainable systems. I'm based in Melbourne, Australia with full work rights and available for full-time software engineering roles.",
+  "Most of my commercial work lives in private repositories. In interviews I can walk through scope, technical decisions, and measurable outcomes while respecting confidentiality.",
+  "I also build focused public work that demonstrates secure authentication, scalable APIs, and production-ready application architecture.",
 ];
 
 export type SkillGroup = {
@@ -134,29 +150,15 @@ export const experience: ExperienceItem[] = [
     highlights: [
       "Developed and maintained ASP.NET Core backend services and internal APIs.",
       "Optimised SQL queries and execution performance for operational workflows.",
-      "Investigated and resolved production issues in enterprise systems",
+      "Investigated and resolved production issues in enterprise systems.",
       "Collaborated with QA and business stakeholders during feature delivery.",
       "Contributed across development, deployment, and support phases.",
     ],
     tech: ["ASP.NET Core", "C#", "SQL Server", "REST APIs", "Azure DevOps"],
   },
   {
-    org: "SLT Digital Services (Pvt) Ltd",
-    role: "Software developer",
-    period: "Oct 2022 — Apr 2023",
-    summary:
-      "Worked on internal business applications and reporting systems with strong SQL Server usage and operational data handling.",
-    highlights: [
-      "Built reporting and admin features using React and backend services.",
-      "Improved SQL-based workflows and operational reporting.",
-      "Assisted with debugging, testing, and production support",
-      "Worked within Agile delivery teams on business application improvements",
-    ],
-    tech: ["React", "SQL Server", "Reporting", "Agile"],
-  },
-  {
     org: "Affordable Dumpster Rental (US) — Freelance Developer",
-    role: "Software developer",
+    role: "Software Developer",
     period: "2024 — 2025",
     summary:
       "Contributed to an operational management platform using Next.js, NestJS, and Supabase.",
@@ -167,6 +169,20 @@ export const experience: ExperienceItem[] = [
       "Participated in deployment and production support activities.",
     ],
     tech: ["Next.js", "NestJS", "Supabase", "PostgreSQL", "TypeScript"],
+  },
+  {
+    org: "SLT Digital Services (Pvt) Ltd",
+    role: "Software Developer",
+    period: "Oct 2022 — Apr 2023",
+    summary:
+      "Worked on internal business applications and reporting systems with strong SQL Server usage and operational data handling.",
+    highlights: [
+      "Built reporting and admin features using React and backend services.",
+      "Improved SQL-based workflows and operational reporting.",
+      "Assisted with debugging, testing, and production support.",
+      "Worked within Agile delivery teams on business application improvements.",
+    ],
+    tech: ["React", "SQL Server", "Reporting", "Agile"],
   },
 ];
 
