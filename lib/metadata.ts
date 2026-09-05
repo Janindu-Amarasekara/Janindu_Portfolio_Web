@@ -26,10 +26,6 @@ export const rootMetadata: Metadata = {
   publisher: siteConfig.person.name,
   keywords: [...siteConfig.keywords],
   category: "technology",
-  icons: {
-    icon: [{ url: "/avatar.jpeg", type: "image/jpeg" }],
-    apple: [{ url: "/avatar.jpeg", type: "image/jpeg" }],
-  },
   referrer: "origin-when-cross-origin",
   formatDetection: {
     email: false,
